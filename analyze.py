@@ -1,11 +1,11 @@
 #!/usr/bin/env python
-# A script to analyze datasets available at ksskml/data.
+# A script to analyze datasets available at w4k2/benchmark_datasets.
 
 import os  # to list files
 import re  # to use regex
 import csv  # to save some output
 import numpy as np  # to calculate ratio
-import weles as wl  # to analyze with ksskml
+import ksienie as ks
 
 # Gather all the datafiles
 directory = 'datasets/'
@@ -14,29 +14,30 @@ files = [(directory + x, x[:-4]) for \
     if re.match('^([a-zA-Z0-9])+\.csv$', x)]
 
 # Iterate datafiles
-with open('datasets.csv', 'wb') as csvfile:
+with open('datasets.csv', 'w') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
     # write header
     writer.writerow(['dataset', 'samples', 'features', 'classes', 'ratio', 'tags'])
     for file in files:
         # load dataset
-        dataset = wl.Dataset(file[0])
+        X, y = ks.csv2Xy(file[0])
 
         # gather information
         tags = []
-        numberOfFeatures = dataset.features
-        numberOfSamples = len(dataset.samples)
-        numberOfClasses = len(dataset.classes)
+        numberOfFeatures = X.shape[1]
+        numberOfSamples = len(y)
+        numberOfClasses = len(np.unique(y))
         if numberOfClasses == 2:
             tags.append("binary")
         else:
             tags.append("multi-class")
         if numberOfFeatures >= 8:
             tags.append("multi-feature")
+
         # Calculate ratio
         ratio = [0.] * numberOfClasses
-        for sample in dataset.samples:
-            ratio[sample.label] += 1
+        for y_ in y:
+            ratio[y_] += 1
         ratio = [int(round(i / min(ratio))) for i in ratio]
         if max(ratio) > 4:
             tags.append("imbalanced")
@@ -46,17 +47,18 @@ with open('datasets.csv', 'wb') as csvfile:
 
         # write information
         writer.writerow([
-            dataset.db_name,
+            file[1],
             numberOfSamples,
             numberOfFeatures,
             numberOfClasses,
             ratio,
             tags])
 
-        print "%2i features, %5i samples, %2i classes, %s ratio - %s (%s)" % (
+        print("%3i features, %5i samples, %2i classes, %3s ratio - %s (%s)" % (
             numberOfFeatures,
             numberOfSamples,
             numberOfClasses,
             ratio,
-            dataset,
+            file[1],
             tags)
+        )

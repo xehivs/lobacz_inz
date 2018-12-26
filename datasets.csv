@@ -1,29 +1,23 @@
 dataset,samples,features,classes,ratio,tags
-australian,690,14,2,1,binary multi-feature
-balance,625,4,3,6,multi-class imbalanced
 breastcan,683,9,2,2,binary multi-feature
-diabetes,768,8,2,2,binary multi-feature
-digit,10992,17,10,1,multi-class multi-feature
-ecoli,336,7,8,72,multi-class imbalanced
-german,1000,24,2,2,binary multi-feature
-hayes,160,4,3,2,multi-class
-heart,270,13,2,1,binary multi-feature
-indianpines,5000,220,17,1263,multi-class multi-feature imbalanced
-ionosphere,351,34,2,2,binary multi-feature
-iris,150,4,3,1,multi-class
-KSC,5000,176,12,1226,multi-class multi-feature imbalanced
-liver,345,6,2,1,binary
-monkone,556,6,2,1,binary
-monkthree,554,6,2,1,binary
-monktwo,601,6,2,2,binary
-pavia,5000,103,10,157,multi-class multi-feature imbalanced
-paviaC,5000,102,10,341,multi-class multi-feature imbalanced
-salinas,5000,224,17,70,multi-class multi-feature imbalanced
-salinasA,5000,224,7,5,multi-class multi-feature imbalanced
-sonar,208,60,2,1,binary multi-feature
-soybean,47,20,4,2,multi-class multi-feature
-spambase,4601,57,2,2,binary multi-feature
-waveform,5000,21,3,1,multi-class multi-feature
-wine,178,13,3,1,multi-class multi-feature
 wisconsin,699,9,2,2,binary multi-feature
+ionosphere,351,34,2,2,binary multi-feature
+soybean,47,20,4,2,multi-class multi-feature
+sonar,208,60,2,1,binary multi-feature
+digit,10992,17,10,1,multi-class multi-feature
+balance,625,4,3,6,multi-class imbalanced
+monkone,556,6,2,1,binary
+heart,270,13,2,1,binary multi-feature
+australian,690,14,2,1,binary multi-feature
+spambase,4601,57,2,2,binary multi-feature
+liver,345,6,2,1,binary
+waveform,5000,21,3,1,multi-class multi-feature
+hayes,160,4,3,2,multi-class
+german,1000,24,2,2,binary multi-feature
+iris,150,4,3,1,multi-class
+monktwo,601,6,2,2,binary
+ecoli,336,7,8,72,multi-class imbalanced
+wine,178,13,3,1,multi-class multi-feature
+diabetes,768,8,2,2,binary multi-feature
 yeast3,1484,8,2,8,binary multi-feature imbalanced
+monkthree,554,6,2,1,binary

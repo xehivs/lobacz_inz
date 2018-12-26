@@ -2,8 +2,6 @@
 # This script calculates effectiveness of all reference algorithms wrapped from
 # skl and saves them to reference.csv.
 
-from weles import *  # to analyze with ksskml
-from ece import *
 import numpy as np
 import os  # to list files
 import re  # to use regex
@@ -14,7 +12,6 @@ directory = 'datasets/'
 files = [(directory + x, x[:-4]) for \
     x in os.listdir(directory) \
     if re.match('^([a-zA-Z0-9])+\.csv$', x)]
-exclusions = ['hyper', 'hyperbi']
 
 # Iterate datafiles
 with open('reference.csv', 'wb') as csvfile:

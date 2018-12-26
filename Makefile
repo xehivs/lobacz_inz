@@ -1,6 +1,3 @@
-init:
-	pip install -U -r requirements.txt
-
-work: init
+work:
 	./analyze.py
 	./reference.py
