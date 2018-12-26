@@ -8,10 +8,7 @@ import re  # to use regex
 import csv  # to save some output
 
 # Gather all the datafiles
-directory = 'datasets/'
-files = [(directory + x, x[:-4]) for \
-    x in os.listdir(directory) \
-    if re.match('^([a-zA-Z0-9])+\.csv$', x)]
+files = ks.dir2files('datasets/')
 
 # Iterate datafiles
 with open('reference.csv', 'wb') as csvfile:

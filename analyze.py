@@ -8,10 +8,7 @@ import numpy as np  # to calculate ratio
 import ksienie as ks
 
 # Gather all the datafiles
-directory = 'datasets/'
-files = [(directory + x, x[:-4]) for \
-    x in os.listdir(directory) \
-    if re.match('^([a-zA-Z0-9])+\.csv$', x)]
+files = ks.dir2files('datasets/')
 
 # Iterate datafiles
 with open('datasets.csv', 'w') as csvfile:
@@ -20,7 +17,8 @@ with open('datasets.csv', 'w') as csvfile:
     writer.writerow(['dataset', 'samples', 'features', 'classes', 'ratio', 'tags'])
     for file in files:
         # load dataset
-        X, y = ks.csv2Xy(file[0])
+        X, y = ks.csv2Xy(file)
+        dbname = file.split('/')[-1].split('.')[0]
 
         # gather information
         tags = []
@@ -47,7 +45,7 @@ with open('datasets.csv', 'w') as csvfile:
 
         # write information
         writer.writerow([
-            file[1],
+            dbname,
             numberOfSamples,
             numberOfFeatures,
             numberOfClasses,
@@ -59,6 +57,6 @@ with open('datasets.csv', 'w') as csvfile:
             numberOfSamples,
             numberOfClasses,
             ratio,
-            file[1],
+            dbname,
             tags)
         )
