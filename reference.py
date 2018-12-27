@@ -13,6 +13,7 @@ from sklearn import neighbors, naive_bayes, svm, tree, neural_network
 from sklearn import base
 from sklearn import model_selection
 from sklearn import metrics
+from sklearn import preprocessing
 
 # Initialize classifiers
 classifiers = {
@@ -20,7 +21,7 @@ classifiers = {
     'kNN': neighbors.KNeighborsClassifier(),
     'SVC': svm.SVC(gamma='scale'),
     'DTC': tree.DecisionTreeClassifier(),
-    #'MLP': neural_network.MLPClassifier()
+    'MLP': neural_network.MLPClassifier()
 }
 
 # Choose metrics
@@ -28,18 +29,18 @@ used_metrics = {
     'ACC': metrics.accuracy_score,
     'BAC': metrics.balanced_accuracy_score,
     'APC': metrics.average_precision_score,
-    #'BSL': metrics.brier_score_loss,
+    'BSL': metrics.brier_score_loss,
     'CKS': metrics.cohen_kappa_score,
     'F1': metrics.f1_score,
-    #'HaL': metrics.hamming_loss,
-    #'HiL': metrics.hinge_loss,
-    #'JSS': metrics.jaccard_similarity_score,
-    #'LoL': metrics.log_loss,
-    #'MaC': metrics.matthews_corrcoef,
-    #'PS_': metrics.precision_score,
-    #'RCS': metrics.recall_score,
-    #'AUC': metrics.roc_auc_score,
-    #'ZOL': metrics.zero_one_loss,
+    'HaL': metrics.hamming_loss,
+    'HiL': metrics.hinge_loss,
+    'JSS': metrics.jaccard_similarity_score,
+    'LoL': metrics.log_loss,
+    'MaC': metrics.matthews_corrcoef,
+    'PS': metrics.precision_score,
+    'RCS': metrics.recall_score,
+    'AUC': metrics.roc_auc_score,
+    'ZOL': metrics.zero_one_loss,
 }
 
 # Gather all the datafiles and filter them by tags
@@ -68,9 +69,6 @@ for i, dataset in enumerate(tqdm(datasets, desc='DBS', ascii=True)):
     for fold, (train, test) in enumerate(tqdm(skf.split(X, y), desc='FLD', ascii=True, total=5)):
         X_train, X_test = X[train], X[test]
         y_train, y_test = y[train], y[test]
-
-        #print("\t# F %i" % fold)
-
         for c, clf_name in enumerate(tqdm(classifiers, desc='CLF', ascii=True)):
             clf = base.clone(classifiers[clf_name])
             clf.fit(X_train, y_train)

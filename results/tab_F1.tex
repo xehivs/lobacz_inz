@@ -4,30 +4,32 @@
 S[table-format=0.3, table-figures-uncertainty=1]|
 S[table-format=0.3, table-figures-uncertainty=1]|
 S[table-format=0.3, table-figures-uncertainty=1]|
+S[table-format=0.3, table-figures-uncertainty=1]|
 S[table-format=0.3, table-figures-uncertainty=1]}
 \toprule\bfseries Dataset &
 \multicolumn{1}{c|}{\bfseries GNB} &
 \multicolumn{1}{c|}{\bfseries kNN} &
 \multicolumn{1}{c|}{\bfseries SVC} &
-\multicolumn{1}{c }{\bfseries DTC} \\
+\multicolumn{1}{c|}{\bfseries DTC} &
+\multicolumn{1}{c }{\bfseries MLP} \\
 \midrule
-\emph{breastcan}&\bfseries 0.944(22) &\bfseries 0.954(32) &\bfseries 0.951(32) & 0.902(30) \\
-\emph{wisconsin}&\bfseries 0.936(23) &\bfseries 0.920(56) &\bfseries 0.932(34) & 0.883(25) \\
-\emph{ionosphere}& 0.790(63) & 0.692(82) &\bfseries 0.909(45) &\bfseries 0.834(73) \\
-\emph{breastcancoimbra}&\bfseries 0.455(168) &\bfseries 0.532(75) &\bfseries 0.591(106) &\bfseries 0.632(124) \\
-\emph{sonar}&\bfseries 0.599(281) &\bfseries 0.521(137) &\bfseries 0.572(184) &\bfseries 0.675(83) \\
-\emph{monkone}& 0.617(146) & 0.807(104) & 0.807(55) &\bfseries 1.000(0) \\
-\emph{heart}&\bfseries 0.817(26) & 0.616(67) & 0.618(56) & 0.694(74) \\
-\emph{australian}&\bfseries 0.726(19) & 0.617(45) & 0.576(74) &\bfseries 0.761(45) \\
-\emph{banknote}& 0.812(40) &\bfseries 1.000(0) &\bfseries 1.000(0) & 0.980(6) \\
-\emph{spambase}&\bfseries 0.780(56) & 0.762(45) &\bfseries 0.779(41) &\bfseries 0.853(52) \\
-\emph{liver}& 0.523(103) &\bfseries 0.734(36) &\bfseries 0.762(24) &\bfseries 0.692(46) \\
-\emph{popfailures}&\bfseries 0.970(4) & 0.953(3) & 0.956(1) & 0.949(15) \\
-\emph{german}&\bfseries 0.574(48) & 0.371(30) & 0.260(58) & 0.461(71) \\
-\emph{diabetes}&\bfseries 0.621(32) & 0.512(44) & 0.411(88) &\bfseries 0.584(39) \\
-\emph{yeast3}& 0.236(19) &\bfseries 0.738(50) & 0.555(50) &\bfseries 0.707(75) \\
-\emph{cryotherapy}&\bfseries 0.863(15) & 0.729(74) &\bfseries 0.859(34) &\bfseries 0.875(44) \\
-\emph{monkthree}&\bfseries 0.907(54) &\bfseries 0.970(11) &\bfseries 0.964(19) &\bfseries 0.958(8) \\
+\emph{breastcan}&\bfseries 0.944(22) &\bfseries 0.954(32) &\bfseries 0.951(32) &\bfseries 0.905(43) &\bfseries 0.936(65) \\
+\emph{wisconsin}&\bfseries 0.936(23) &\bfseries 0.920(56) &\bfseries 0.932(34) &\bfseries 0.877(41) &\bfseries 0.914(63) \\
+\emph{ionosphere}& 0.790(63) & 0.692(82) &\bfseries 0.909(45) &\bfseries 0.797(108) &\bfseries 0.874(70) \\
+\emph{breastcancoimbra}&\bfseries 0.455(168) &\bfseries 0.532(75) &\bfseries 0.591(106) &\bfseries 0.608(96) &\bfseries 0.539(272) \\
+\emph{sonar}&\bfseries 0.599(281) &\bfseries 0.521(137) &\bfseries 0.572(184) &\bfseries 0.673(102) &\bfseries 0.656(131) \\
+\emph{monkone}& 0.617(146) & 0.807(104) & 0.807(55) &\bfseries 1.000(0) & 0.777(169) \\
+\emph{heart}&\bfseries 0.817(26) & 0.616(67) & 0.618(56) &\bfseries 0.718(76) & 0.737(38) \\
+\emph{australian}&\bfseries 0.726(19) & 0.617(45) & 0.576(74) &\bfseries 0.774(63) &\bfseries 0.716(65) \\
+\emph{banknote}& 0.812(40) &\bfseries 1.000(0) &\bfseries 1.000(0) & 0.978(7) &\bfseries 1.000(0) \\
+\emph{spambase}&\bfseries 0.780(56) & 0.762(45) &\bfseries 0.779(41) &\bfseries 0.858(55) &\bfseries 0.790(91) \\
+\emph{liver}& 0.523(103) &\bfseries 0.734(36) &\bfseries 0.762(24) &\bfseries 0.694(46) &\bfseries 0.756(10) \\
+\emph{popfailures}&\bfseries 0.970(4) & 0.953(3) & 0.956(1) & 0.950(15) & 0.955(1) \\
+\emph{german}&\bfseries 0.574(48) & 0.371(30) & 0.260(58) & 0.474(58) &\bfseries 0.595(36) \\
+\emph{diabetes}&\bfseries 0.621(32) & 0.512(44) & 0.411(88) &\bfseries 0.568(45) & 0.509(67) \\
+\emph{yeast3}& 0.236(19) &\bfseries 0.738(50) & 0.555(50) &\bfseries 0.723(81) & 0.637(57) \\
+\emph{cryotherapy}& 0.863(15) & 0.729(74) &\bfseries 0.859(34) &\bfseries 0.915(43) &\bfseries 0.786(95) \\
+\emph{monkthree}&\bfseries 0.907(54) &\bfseries 0.970(11) &\bfseries 0.964(19) & 0.954(8) &\bfseries 0.943(22) \\
 \bottomrule
 \end{tabular}
 \caption{Results for F1 metric}

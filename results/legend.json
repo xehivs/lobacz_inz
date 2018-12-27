@@ -30,14 +30,25 @@
 		"GNB",
 		"kNN",
 		"SVC",
-		"DTC"
+		"DTC",
+		"MLP"
 	],
 	"metrics": [
 		"ACC",
 		"BAC",
 		"APC",
+		"BSL",
 		"CKS",
-		"F1"
+		"F1",
+		"HaL",
+		"HiL",
+		"JSS",
+		"LoL",
+		"MaC",
+		"PS_",
+		"RCS",
+		"AUC",
+		"ZOL"
 	],
 	"folds": 5
 }

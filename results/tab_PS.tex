@@ -1,0 +1,36 @@
+\begin{table}[!ht]
+\centering
+\begin{tabular}{l|
+S[table-format=0.3, table-figures-uncertainty=1]|
+S[table-format=0.3, table-figures-uncertainty=1]|
+S[table-format=0.3, table-figures-uncertainty=1]|
+S[table-format=0.3, table-figures-uncertainty=1]|
+S[table-format=0.3, table-figures-uncertainty=1]}
+\toprule\bfseries Dataset &
+\multicolumn{1}{c|}{\bfseries GNB} &
+\multicolumn{1}{c|}{\bfseries kNN} &
+\multicolumn{1}{c|}{\bfseries SVC} &
+\multicolumn{1}{c|}{\bfseries DTC} &
+\multicolumn{1}{c }{\bfseries MLP} \\
+\midrule
+\emph{breastcan}&\bfseries 0.919(42) &\bfseries 0.956(38) &\bfseries 0.936(39) &\bfseries 0.926(39) &\bfseries 0.953(43) \\
+\emph{wisconsin}&\bfseries 0.909(48) &\bfseries 0.939(50) &\bfseries 0.917(38) &\bfseries 0.899(48) &\bfseries 0.947(49) \\
+\emph{ionosphere}& 0.888(36) &\bfseries 0.931(49) &\bfseries 0.982(21) & 0.822(94) &\bfseries 0.978(26) \\
+\emph{breastcancoimbra}&\bfseries 0.678(159) &\bfseries 0.541(98) &\bfseries 0.512(73) &\bfseries 0.642(75) &\bfseries 0.480(242) \\
+\emph{sonar}&\bfseries 0.715(334) &\bfseries 0.552(132) &\bfseries 0.576(157) &\bfseries 0.679(91) &\bfseries 0.689(179) \\
+\emph{monkone}& 0.625(93) & 0.820(103) &\bfseries 0.875(132) &\bfseries 1.000(0) & 0.888(110) \\
+\emph{heart}&\bfseries 0.836(38) & 0.657(42) & 0.653(46) & 0.712(69) &\bfseries 0.755(108) \\
+\emph{australian}&\bfseries 0.852(49) & 0.686(55) & 0.691(38) & 0.774(48) & 0.733(61) \\
+\emph{banknote}& 0.837(32) &\bfseries 1.000(0) &\bfseries 1.000(0) & 0.974(7) &\bfseries 1.000(0) \\
+\emph{spambase}& 0.656(70) &\bfseries 0.804(65) &\bfseries 0.811(59) &\bfseries 0.850(81) &\bfseries 0.714(158) \\
+\emph{liver}&\bfseries 0.680(98) & 0.683(32) &\bfseries 0.691(43) &\bfseries 0.721(45) &\bfseries 0.740(23) \\
+\emph{popfailures}&\bfseries 0.944(6) & 0.915(3) & 0.915(3) &\bfseries 0.951(14) & 0.916(5) \\
+\emph{german}& 0.546(69) & 0.469(48) &\bfseries 0.638(50) & 0.476(60) &\bfseries 0.672(69) \\
+\emph{diabetes}&\bfseries 0.662(23) & 0.571(56) &\bfseries 0.585(79) &\bfseries 0.591(70) &\bfseries 0.489(115) \\
+\emph{yeast3}& 0.134(12) &\bfseries 0.817(66) &\bfseries 0.910(111) &\bfseries 0.723(112) &\bfseries 0.824(101) \\
+\emph{cryotherapy}&\bfseries 0.823(58) &\bfseries 0.774(116) &\bfseries 0.834(88) &\bfseries 0.922(66) &\bfseries 0.841(157) \\
+\emph{monkthree}&\bfseries 0.991(10) &\bfseries 0.969(19) &\bfseries 0.982(22) &\bfseries 0.971(38) &\bfseries 0.975(31) \\
+\bottomrule
+\end{tabular}
+\caption{Results for PS metric}
+\end{table}
