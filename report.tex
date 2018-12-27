@@ -4,6 +4,9 @@
 \usepackage{siunitx}
 \usepackage{graphicx}
 \usepackage{color}
+\usepackage{tikz}
+\usepackage{tkz-kiviat}
+\usetikzlibrary{arrows}
 \usepackage{etoolbox}
 \sisetup{
 	detect-weight=true,
@@ -14,6 +17,13 @@
 
 \begin{document}
 \robustify\bfseries
+
+\begin{tikzpicture}[scale=.5]
+   \tkzKiviatDiagram{gaz,charbon,uranium}
+   
+   \tkzKiviatLine[thick,color=blue,mark=none,
+               fill=blue!20,opacity=.5](3,3.5,3)
+\end{tikzpicture}
 
 \input{results/tab_ACC}
 \input{results/tab_APC}
