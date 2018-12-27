@@ -23,11 +23,16 @@
 	],
 	"classifiers": [
 		"GNB",
-		"kNN"
+		"kNN",
+		"SVC",
+		"DTC"
 	],
 	"metrics": [
 		"ACC",
-		"BAC"
+		"BAC",
+		"APC",
+		"CKS",
+		"F1"
 	],
 	"folds": 5
 }

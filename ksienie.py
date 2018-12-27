@@ -2,6 +2,11 @@
 import numpy as np
 import os
 import re
+import json
+
+def json2object(path):
+    with open(path) as json_data:
+        return json.load(json_data)
 
 def csv2Xy(path):
     ds = np.genfromtxt(path, delimiter=',')
