@@ -15,8 +15,6 @@ waveform,5000,21,3,1,multi-class multi-feature
 hayes,160,4,3,2,multi-class
 german,1000,24,2,2,binary multi-feature
 iris,150,4,3,1,multi-class
-monktwo,601,6,2,2,binary
-ecoli,336,7,8,72,multi-class imbalanced
 wine,178,13,3,1,multi-class multi-feature
 diabetes,768,8,2,2,binary multi-feature
 yeast3,1484,8,2,8,binary multi-feature imbalanced

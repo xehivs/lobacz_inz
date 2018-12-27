@@ -11,37 +11,27 @@ import ksienie as ks
 files = ks.dir2files('datasets/')
 
 # Iterate datafiles
-with open('datasets.csv', 'w') as csvfile:
+with open('results/datasets.csv', 'w') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
     # write header
     writer.writerow(['dataset', 'samples', 'features', 'classes', 'ratio', 'tags'])
     for file in files:
         # load dataset
-        X, y = ks.csv2Xy(file)
-        dbname = file.split('/')[-1].split('.')[0]
+        X, y, dbname, tags = ks.csv2Xy(file)
 
         # gather information
-        tags = []
+        tags = " ".join(tags)
         numberOfFeatures = X.shape[1]
         numberOfSamples = len(y)
         numberOfClasses = len(np.unique(y))
-        if numberOfClasses == 2:
-            tags.append("binary")
-        else:
-            tags.append("multi-class")
-        if numberOfFeatures >= 8:
-            tags.append("multi-feature")
 
         # Calculate ratio
         ratio = [0.] * numberOfClasses
         for y_ in y:
             ratio[y_] += 1
         ratio = [int(round(i / min(ratio))) for i in ratio]
-        if max(ratio) > 4:
-            tags.append("imbalanced")
 
         ratio = str(max(ratio))
-        tags = " ".join(tags)
 
         # write information
         writer.writerow([

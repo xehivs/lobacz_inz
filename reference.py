@@ -14,17 +14,6 @@ from sklearn import base
 from sklearn import model_selection
 from sklearn import metrics
 
-
-# Gather all the datafiles and filter them by tags
-files = ks.dir2files('datasets/')
-tag_filter = ['binary', 'multi-class']
-datasets = []
-for file in files:
-    X, y, dbname, tags = ks.csv2Xy(file)
-    intersecting_tags = ks.intersection(tags, tag_filter)
-    if len(intersecting_tags):
-        datasets.append((X, y, dbname))
-
 # Initialize classifiers
 classifiers = {
     'GNB': naive_bayes.GaussianNB(),
@@ -34,6 +23,7 @@ classifiers = {
     #'MLP': neural_network.MLPClassifier()
 }
 
+# Choose metrics
 used_metrics = {
     'ACC': metrics.accuracy_score,
     'BAC': metrics.balanced_accuracy_score,
@@ -51,6 +41,16 @@ used_metrics = {
     #'AUC': metrics.roc_auc_score,
     #'ZOL': metrics.zero_one_loss,
 }
+
+# Gather all the datafiles and filter them by tags
+files = ks.dir2files('datasets/')
+tag_filter = ['binary', 'multi-class']
+datasets = []
+for file in files:
+    X, y, dbname, tags = ks.csv2Xy(file)
+    intersecting_tags = ks.intersection(tags, tag_filter)
+    if len(intersecting_tags):
+        datasets.append((X, y, dbname))
 
 # Prepare results cube
 print("# Experiment on %i datasets, with %i estimators using %i metrics." % (
