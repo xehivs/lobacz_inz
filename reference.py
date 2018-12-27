@@ -5,75 +5,91 @@
 import numpy as np
 import os  # to list files
 import re  # to use regex
-import csv  # to save some output
+import csv  # to save some outputratio
+import json
+from tqdm import tqdm
+import ksienie as ks
+from sklearn import neighbors, naive_bayes, svm, tree, neural_network
+from sklearn import base
+from sklearn import model_selection
+from sklearn import metrics
 
-# Gather all the datafiles
+
+# Gather all the datafiles and filter them by tags
 files = ks.dir2files('datasets/')
+tag_filter = ['binary', 'multi-class']
+datasets = []
+for file in files:
+    X, y, dbname, tags = ks.csv2Xy(file)
+    intersecting_tags = ks.intersection(tags, tag_filter)
+    if len(intersecting_tags):
+        datasets.append((X, y, dbname))
 
-# Iterate datafiles
-with open('reference.csv', 'wb') as csvfile:
-    writer = csv.writer(csvfile, delimiter=',')
-    # write header
-    writer.writerow(['dataset', 'knnacc', 'knnbac', 'gnbacc', 'gnbbac', 'dtcacc', 'dtcbac', 'mlpacc', 'mlpbac', 'svcacc', 'svcbac'])
+# Initialize classifiers
+classifiers = {
+    'GNB': naive_bayes.GaussianNB(),
+    'kNN': neighbors.KNeighborsClassifier(),
+    #'SVC': svm.SVC(gamma='scale'),
+    #'DTC': tree.DecisionTreeClassifier(),
+    #'MLP': neural_network.MLPClassifier()
+}
 
-    scores = np.zeros((11)).astype(int)
-    for file in files:
-        # Quick hack to ignore files with missing values
-        if file[1] in exclusions:
-            continue
-        # load dataset
-        dataset = Dataset(file[0])
-        print dataset
+used_metrics = {
+    'ACC': metrics.accuracy_score,
+    'BAC': metrics.balanced_accuracy_score,
+    #'APC': metrics.average_precision_score,
+    #'BSL': metrics.brier_score_loss,
+    #'CKS': metrics.cohen_kappa_score,
+    #'F1_': metrics.f1_score,
+    #'HaL': metrics.hamming_loss,
+    #'HiL': metrics.hinge_loss,
+    #'JSS': metrics.jaccard_similarity_score,
+    #'LoL': metrics.log_loss,
+    #'MaC': metrics.matthews_corrcoef,
+    #'PS_': metrics.precision_score,
+    #'RCS': metrics.recall_score,
+    #'AUC': metrics.roc_auc_score,
+    #'ZOL': metrics.zero_one_loss,
+}
 
-        # initialize classifiers
-        classifiers = [
-            sklKNN(dataset, {'k': 5}),
-            sklGNB(dataset, {}),
-            sklDTC(dataset, {}),
-            sklMLP(dataset, {}),
-            sklSVC(dataset, {})
-        ]
+# Prepare results cube
+print("# Experiment on %i datasets, with %i estimators using %i metrics." % (
+    len(datasets), len(classifiers), len(used_metrics)
+))
+rescube = np.zeros((len(datasets), len(classifiers), len(used_metrics), 5))
 
-        # and save output
-        row = [dataset.db_name]
-        for classifier in classifiers:
-            row.extend(classifier.quickLoop().values())
-        bestAcc = (0,0)
-        bestBac = (0,0)
+# Iterate datasets
+for i, dataset in enumerate(tqdm(datasets, desc='DBS', ascii=True)):
+    # load dataset
+    X, y, dbname = dataset
 
-        for i in xrange(5):
-            acc = row[1 + 2*i]
-            bac = row[2 + 2*i]
+    # Folds
+    skf = model_selection.StratifiedKFold(n_splits=5)
+    for fold, (train, test) in enumerate(tqdm(skf.split(X, y), desc='FLD', ascii=True, total=5)):
+        X_train, X_test = X[train], X[test]
+        y_train, y_test = y[train], y[test]
 
-            if not np.isnan(acc):
-                if bestAcc[1] < acc:
-                    bestAcc = (i, acc)
+        #print("\t# F %i" % fold)
 
-            if not np.isnan(bac):
-                if bestBac[1] < bac:
-                    bestBac = (i, bac)
+        for c, clf_name in enumerate(tqdm(classifiers, desc='CLF', ascii=True)):
+            clf = base.clone(classifiers[clf_name])
+            clf.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
 
-        for i in xrange(5):
-            acc = row[1 + 2*i]
-            bac = row[2 + 2*i]
+            for m, metric_name in enumerate(tqdm(used_metrics, desc='MET', ascii=True)):
+                try:
+                    score = used_metrics[metric_name](y_test, y_pred)
+                    rescube[i,c,m,fold] = score
+                except:
+                    rescube[i,c,m,fold] = np.nan
 
-            if np.isnan(acc):
-                row[1 + 2*i] = '\\tiny NaN'
-            else:
-                if acc == bestAcc[1]:
-                    scores[1+ 2*i] += 1
-                    row[1 + 2*i] = '\\color{red} \\oldstylenums{%.3f}' % acc
-                else:
-                    row[1 + 2*i] = '\\oldstylenums{%.3f}' % acc
+np.save('results/rescube', rescube)
+with open('results/legend.json', 'w') as outfile:
+    json.dump({
+        'datasets': [obj[2] for obj in datasets],
+        'classifiers': list(classifiers.keys()),
+        'metrics': list(used_metrics.keys()),
+        'folds': 5
+    }, outfile, indent='\t')
 
-            if np.isnan(bac):
-                row[2 + 2*i] = '\\tiny NaN'
-            else:
-                if bac == bestBac[1]:
-                    scores[2+ 2*i] += 1
-                    row[2 + 2*i] = '\\color{red} \\oldstylenums{%.3f}' % bac
-                else:
-                    row[2 + 2*i] = '\\oldstylenums{%.3f}' % bac
-
-        writer.writerow(row)
-    print scores
+print("\n")

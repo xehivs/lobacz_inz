@@ -1,0 +1,33 @@
+{
+	"datasets": [
+		"breastcan",
+		"wisconsin",
+		"ionosphere",
+		"soybean",
+		"sonar",
+		"digit",
+		"balance",
+		"monkone",
+		"heart",
+		"australian",
+		"spambase",
+		"liver",
+		"waveform",
+		"hayes",
+		"german",
+		"iris",
+		"wine",
+		"diabetes",
+		"yeast3",
+		"monkthree"
+	],
+	"classifiers": [
+		"GNB",
+		"kNN"
+	],
+	"metrics": [
+		"ACC",
+		"BAC"
+	],
+	"folds": 5
+}
