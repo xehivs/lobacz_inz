@@ -8,13 +8,13 @@ import numpy as np  # to calculate ratio
 import ksienie as ks
 
 # Gather all the datafiles
-files = ks.dir2files('datasets/')
+files = ks.dir2files("datasets/")
 
 # Iterate datafiles
-with open('results/datasets.csv', 'w') as csvfile:
-    writer = csv.writer(csvfile, delimiter=',')
+with open("results/datasets.csv", "w") as csvfile:
+    writer = csv.writer(csvfile, delimiter=",")
     # write header
-    writer.writerow(['dataset', 'samples', 'features', 'classes', 'ratio', 'tags'])
+    writer.writerow(["dataset", "samples", "features", "classes", "ratio", "tags"])
     for file in files:
         # load dataset
         X, y, dbname, tags = ks.csv2Xy(file)
@@ -26,7 +26,7 @@ with open('results/datasets.csv', 'w') as csvfile:
         numberOfClasses = len(np.unique(y))
 
         # Calculate ratio
-        ratio = [0.] * numberOfClasses
+        ratio = [0.0] * numberOfClasses
         for y_ in y:
             ratio[y_] += 1
         ratio = [int(round(i / min(ratio))) for i in ratio]
@@ -34,19 +34,11 @@ with open('results/datasets.csv', 'w') as csvfile:
         ratio = str(max(ratio))
 
         # write information
-        writer.writerow([
-            dbname,
-            numberOfSamples,
-            numberOfFeatures,
-            numberOfClasses,
-            ratio,
-            tags])
+        writer.writerow(
+            [dbname, numberOfSamples, numberOfFeatures, numberOfClasses, ratio, tags]
+        )
 
-        print("%3i features, %5i samples, %2i classes, %3s ratio - %s (%s)" % (
-            numberOfFeatures,
-            numberOfSamples,
-            numberOfClasses,
-            ratio,
-            dbname,
-            tags)
+        print(
+            "%3i features, %5i samples, %2i classes, %3s ratio - %s (%s)"
+            % (numberOfFeatures, numberOfSamples, numberOfClasses, ratio, dbname, tags)
         )

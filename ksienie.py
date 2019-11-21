@@ -23,7 +23,7 @@ def dir2files(path, extention="csv"):
     return [
         path + x
         for x in os.listdir(path)
-        if re.match("^([a-zA-Z0-9])+\.%s$" % extention, x)
+        if re.match("^([a-zA-Z0-9-_])+\.%s$" % extention, x)
     ]
 
 

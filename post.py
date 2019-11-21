@@ -6,15 +6,15 @@ import latextabs as lt
 
 # Parameters
 used_test = stats.ranksums
-used_p = .05
+used_p = 0.05
 
 # Load results
-legend = ks.json2object('results/legend.json')
-datasets = legend['datasets']
-classifiers = legend['classifiers']
-metrics = legend['metrics']
-folds = legend['folds']
-rescube = np.load('results/rescube.npy')
+legend = ks.json2object("results/legend.json")
+datasets = legend["datasets"]
+classifiers = legend["classifiers"]
+metrics = legend["metrics"]
+folds = legend["folds"]
+rescube = np.load("results/rescube.npy")
 
 # First generate tables for each metric
 for mid, metric in enumerate(metrics):
@@ -25,6 +25,9 @@ for mid, metric in enumerate(metrics):
 
     for did, dataset in enumerate(datasets):
         print("| Dataset %10s [%i]" % (dataset, did))
+        dataset = dataset.replace("_", "-")
+        # print(dataset)
+        # continue
 
         # Subtable is 2d (clf, fold)
         subtable = rescube[did, :, mid, :]
@@ -55,8 +58,6 @@ for mid, metric in enumerate(metrics):
         print(dependency)
         print(scores)
         print(stds)
-        table_file.write(lt.row(dataset,
-                                dependency,
-                                scores, stds))
+        table_file.write(lt.row(dataset, dependency, scores, stds))
     table_file.write(lt.footer("Results for %s metric" % metric))
     table_file.close()

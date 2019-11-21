@@ -22,7 +22,13 @@ for i, dataset in enumerate(datasets):
 
     print(filename)
 
-    np.savetxt(filename, db)
+    fmt = ["%.3f" for i in range(X.shape[1])] + ["%i"]
+
+    print(fmt)
+
+    #exit()
+
+    np.savetxt(filename, db, fmt=fmt, delimiter=",")
     #print(y.shape)
     #print(X_[0])
     #print(X_)
