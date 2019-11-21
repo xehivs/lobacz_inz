@@ -45,7 +45,7 @@ used_metrics = {
 
 # Gather all the datafiles and filter them by tags
 files = ks.dir2files("datasets/")
-tag_filter = ["binary"]  # , "multi-class"]
+tag_filter = ["imbalanced"]  # , "multi-class"]
 datasets = []
 for file in files:
     X, y, dbname, tags = ks.csv2Xy(file)
