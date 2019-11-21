@@ -19,8 +19,8 @@ from sklearn import preprocessing
 classifiers = {
     "GNB": naive_bayes.GaussianNB(),
     "kNN": neighbors.KNeighborsClassifier(),
-    #'SVC': svm.SVC(gamma='scale'),
-    #'DTC': tree.DecisionTreeClassifier(),
+    'SVC': svm.SVC(gamma='scale'),
+    'DTC': tree.DecisionTreeClassifier(),
     #'MLP': neural_network.MLPClassifier()
 }
 

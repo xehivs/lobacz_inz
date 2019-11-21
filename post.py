@@ -42,22 +42,21 @@ for mid, metric in enumerate(metrics):
         stds = np.std(subtable, axis=1)
 
         # Get leader and check dependency
-        dependency = np.zeros(len(classifiers)).astype(int)
-        leader = np.argmax(scores)
+        # dependency = np.zeros(len(classifiers)).astype(int)
+        dependency = np.zeros((len(classifiers), len(classifiers)))
 
-        a = subtable[leader]
-        for cid, clf in enumerate(classifiers):
-            b = subtable[cid]
-            test = used_test(a, b)
-            # If pvalue is smaller or equal to used p, then
-            # samples ar LIKELY drawn from different distributions
-            # If pvalue is larger than used p, samples are LIKELY
-            # Drawn from the same distribution
-            dependency[cid] = test.pvalue > used_p
+        for cida, clf_a in enumerate(classifiers):
+            a = subtable[cida]
+            for cid, clf in enumerate(classifiers):
+                b = subtable[cid]
+                test = used_test(a, b)
+                dependency[cida, cid] = test.pvalue > used_p
 
         print(dependency)
         print(scores)
         print(stds)
-        table_file.write(lt.row(dataset, dependency, scores, stds))
+        table_file.write(lt.row(dataset, scores, stds))
+        table_file.write(lt.row_stats(dataset, dependency, scores, stds))
+
     table_file.write(lt.footer("Results for %s metric" % metric))
     table_file.close()
