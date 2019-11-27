@@ -44,7 +44,6 @@ for mid, metric in enumerate(metrics):
         # Get leader and check dependency
         # dependency = np.zeros(len(classifiers)).astype(int)
         dependency = np.zeros((len(classifiers), len(classifiers)))
-
         for cida, clf_a in enumerate(classifiers):
             a = subtable[cida]
             for cid, clf in enumerate(classifiers):
@@ -57,6 +56,7 @@ for mid, metric in enumerate(metrics):
         print(stds)
         table_file.write(lt.row(dataset, scores, stds))
         table_file.write(lt.row_stats(dataset, dependency, scores, stds))
+        # exit()
 
     table_file.write(lt.footer("Results for %s metric" % metric))
     table_file.close()

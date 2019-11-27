@@ -1,66 +1,65 @@
 dataset,samples,features,classes,ratio,tags
-glass4,214,9,2,15,binary multi-feature imbalanced
-ecoli-0-2-3-4_vs_5,202,7,2,9,binary imbalanced
-iris,150,4,3,1,multi-class
-glass-0-1-6_vs_2,192,9,2,10,binary multi-feature imbalanced
-liver,345,6,2,1,binary
-ecoli-0-1_vs_5,240,6,2,11,binary imbalanced
-balance,625,4,3,6,multi-class imbalanced
-yeast-1-4-5-8_vs_7,693,8,2,22,binary multi-feature imbalanced
-digit,10992,17,10,1,multi-class multi-feature
-ecoli4,336,7,2,16,binary imbalanced
-glass5,214,9,2,23,binary multi-feature imbalanced
-ecoli-0-3-4-6_vs_5,205,7,2,9,binary imbalanced
-breastcancoimbra,116,9,2,1,binary multi-feature
-yeast3,1484,8,2,8,binary multi-feature imbalanced
-waveform,5000,21,3,1,multi-class multi-feature
-yeast-0-5-6-7-9_vs_4,528,8,2,9,binary multi-feature imbalanced
-yeast6,1484,8,2,41,binary multi-feature imbalanced
-hayes,160,4,3,2,multi-class
-spambase,4601,57,2,2,binary multi-feature
-australian,690,14,2,1,binary multi-feature
-ecoli-0-6-7_vs_5,220,6,2,10,binary imbalanced
-german,1000,24,2,2,binary multi-feature
-glass-0-1-6_vs_5,184,9,2,19,binary multi-feature imbalanced
-ecoli-0-1-3-7_vs_2-6,281,7,2,39,binary imbalanced
-yeast-0-2-5-6_vs_3-7-8-9,1004,8,2,9,binary multi-feature imbalanced
-ecoli-0-1-4-7_vs_5-6,332,6,2,12,binary imbalanced
-cryotherapy,90,6,2,1,binary
-yeast5,1484,8,2,33,binary multi-feature imbalanced
-shuttle-c2-vs-c4,129,9,2,20,binary multi-feature imbalanced
-ecoli-0-1-4-7_vs_2-3-5-6,336,7,2,11,binary imbalanced
-yeast-0-3-5-9_vs_7-8,506,8,2,9,binary multi-feature imbalanced
-popfailures,540,20,2,11,binary multi-feature imbalanced
-yeast-1_vs_7,459,7,2,14,binary imbalanced
-yeast-1-2-8-9_vs_7,947,8,2,31,binary multi-feature imbalanced
-breastcan,683,9,2,2,binary multi-feature
-ionosphere,351,34,2,2,binary multi-feature
-ecoli-0-1-4-6_vs_5,280,6,2,13,binary imbalanced
-glass-0-1-5_vs_2,172,9,2,9,binary multi-feature imbalanced
-diabetes,768,8,2,2,binary multi-feature
-yeast-2_vs_4,514,8,2,9,binary multi-feature imbalanced
-glass-0-6_vs_5,108,9,2,11,binary multi-feature imbalanced
-banknote,1372,4,2,1,binary
-glass2,214,9,2,12,binary multi-feature imbalanced
-yeast-2_vs_8,482,8,2,23,binary multi-feature imbalanced
-vowel0,988,13,2,10,binary multi-feature imbalanced
-wine,178,13,3,1,multi-class multi-feature
-heart,270,13,2,1,binary multi-feature
 glass-0-4_vs_5,92,9,2,9,binary multi-feature imbalanced
+breastcan,683,9,2,2,binary multi-feature
 wisconsin,699,9,2,2,binary multi-feature
-glass-0-1-4-6_vs_2,205,9,2,11,binary multi-feature imbalanced
-yeast4,1484,8,2,28,binary multi-feature imbalanced
-sonar,208,60,2,1,binary multi-feature
-ecoli-0-4-6_vs_5,203,6,2,9,binary imbalanced
-monkthree,554,6,2,1,binary
-page-blocks-1-3_vs_4,472,10,2,16,binary multi-feature imbalanced
-yeast-0-2-5-7-9_vs_3-6-8,1004,8,2,9,binary multi-feature imbalanced
+yeast-1-2-8-9_vs_7,947,8,2,31,binary multi-feature imbalanced
+ionosphere,351,34,2,2,binary multi-feature
 soybean,47,20,4,2,multi-class multi-feature
+yeast-1_vs_7,459,7,2,14,binary imbalanced
+ecoli-0-1-4-7_vs_5-6,332,6,2,12,binary imbalanced
+breastcancoimbra,116,9,2,1,binary multi-feature
+ecoli-0-6-7_vs_5,220,6,2,10,binary imbalanced
+yeast-1-4-5-8_vs_7,693,8,2,22,binary multi-feature imbalanced
 ecoli-0-1_vs_2-3-5,244,7,2,9,binary imbalanced
-breasttissue,106,9,6,2,multi-class multi-feature
-ecoli-0-6-7_vs_3-5,222,7,2,9,binary imbalanced
-ecoli-0-3-4-7_vs_5-6,257,7,2,9,binary imbalanced
-ecoli-0-2-6-7_vs_3-5,224,7,2,9,binary imbalanced
-shuttle-c0-vs-c4,1829,9,2,14,binary multi-feature imbalanced
+glass-0-1-4-6_vs_2,205,9,2,11,binary multi-feature imbalanced
+sonar,208,60,2,1,binary multi-feature
+ecoli-0-3-4-6_vs_5,205,7,2,9,binary imbalanced
+digit,10992,17,10,1,multi-class multi-feature
+balance,625,4,3,6,multi-class imbalanced
+glass-0-1-6_vs_5,184,9,2,19,binary multi-feature imbalanced
+yeast-0-3-5-9_vs_7-8,506,8,2,9,binary multi-feature imbalanced
+ecoli4,336,7,2,16,binary imbalanced
+ecoli-0-1-4-7_vs_2-3-5-6,336,7,2,11,binary imbalanced
 monkone,556,6,2,1,binary
+heart,270,13,2,1,binary multi-feature
+ecoli-0-3-4-7_vs_5-6,257,7,2,9,binary imbalanced
+ecoli-0-1-3-7_vs_2-6,281,7,2,39,binary imbalanced
+australian,690,14,2,1,binary multi-feature
+glass-0-1-6_vs_2,192,9,2,10,binary multi-feature imbalanced
+shuttle-c2-vs-c4,129,9,2,20,binary multi-feature imbalanced
+banknote,1372,4,2,1,binary
+yeast-2_vs_8,482,8,2,23,binary multi-feature imbalanced
+spambase,4601,57,2,2,binary multi-feature
+ecoli-0-4-6_vs_5,203,6,2,9,binary imbalanced
+yeast-2_vs_4,514,8,2,9,binary multi-feature imbalanced
+liver,345,6,2,1,binary
+waveform,5000,21,3,1,multi-class multi-feature
+page-blocks-1-3_vs_4,472,10,2,16,binary multi-feature imbalanced
+yeast-0-5-6-7-9_vs_4,528,8,2,9,binary multi-feature imbalanced
+hayes,160,4,3,2,multi-class
+german,1000,24,2,2,binary multi-feature
+iris,150,4,3,1,multi-class
+glass2,214,9,2,12,binary multi-feature imbalanced
+ecoli-0-6-7_vs_3-5,222,7,2,9,binary imbalanced
+wine,178,13,3,1,multi-class multi-feature
+ecoli-0-1-4-6_vs_5,280,6,2,13,binary imbalanced
+ecoli-0-2-3-4_vs_5,202,7,2,9,binary imbalanced
+glass-0-6_vs_5,108,9,2,11,binary multi-feature imbalanced
+ecoli-0-2-6-7_vs_3-5,224,7,2,9,binary imbalanced
 ecoli-0-3-4_vs_5,200,7,2,9,binary imbalanced
+glass4,214,9,2,15,binary multi-feature imbalanced
+glass5,214,9,2,23,binary multi-feature imbalanced
+diabetes,768,8,2,2,binary multi-feature
+glass-0-1-5_vs_2,172,9,2,9,binary multi-feature imbalanced
+yeast-0-2-5-6_vs_3-7-8-9,1004,8,2,9,binary multi-feature imbalanced
+yeast3,1484,8,2,8,binary multi-feature imbalanced
+cryotherapy,90,6,2,1,binary
+ecoli-0-1_vs_5,240,6,2,11,binary imbalanced
+shuttle-c0-vs-c4,1829,9,2,14,binary multi-feature imbalanced
+yeast6,1484,8,2,41,binary multi-feature imbalanced
+yeast4,1484,8,2,28,binary multi-feature imbalanced
+breasttissue,106,9,6,2,multi-class multi-feature
+yeast-0-2-5-7-9_vs_3-6-8,1004,8,2,9,binary multi-feature imbalanced
+vowel0,988,13,2,10,binary multi-feature imbalanced
+yeast5,1484,8,2,33,binary multi-feature imbalanced
+monkthree,554,6,2,1,binary

@@ -14,24 +14,30 @@ from sklearn import base
 from sklearn import model_selection
 from sklearn import metrics
 from sklearn import preprocessing
+from ERUSSVC import ERUSSVC
+from ESSVC import ESSVC
 
 # Initialize classifiers
 classifiers = {
-    "GNB": naive_bayes.GaussianNB(),
-    "kNN": neighbors.KNeighborsClassifier(),
-    'SVC': svm.SVC(gamma='scale'),
-    'DTC': tree.DecisionTreeClassifier(),
+    # "GNB": naive_bayes.GaussianNB(),
+    # "kNN": neighbors.KNeighborsClassifier(),
+    "SVC": svm.SVC(gamma="scale"),
+    "RUSSVC": ERUSSVC(n=1),
+    "ERUSSVC": ERUSSVC(n=10),
+    "SSVC": ESSVC(n=1),
+    "ESSVC": ESSVC(n=10)
+    # "DTC": tree.DecisionTreeClassifier(),
     #'MLP': neural_network.MLPClassifier()
 }
 
 # Choose metrics
 used_metrics = {
-    "ACC": metrics.accuracy_score,
+    # "ACC": metrics.accuracy_score,
     "BAC": metrics.balanced_accuracy_score,
     #'APC': metrics.average_precision_score,
     #'BSL': metrics.brier_score_loss,
     #'CKS': metrics.cohen_kappa_score,
-    #'F1': metrics.f1_score,
+    # "F1": metrics.f1_score,
     #'HaL': metrics.hamming_loss,
     #'HiL': metrics.hinge_loss,
     #'JSS': metrics.jaccard_similarity_score,
@@ -39,13 +45,13 @@ used_metrics = {
     #'MaC': metrics.matthews_corrcoef,
     #'PS': metrics.precision_score,
     #'RCS': metrics.recall_score,
-    #'AUC': metrics.roc_auc_score,
+    "AUC": metrics.roc_auc_score,
     #'ZOL': metrics.zero_one_loss,
 }
 
 # Gather all the datafiles and filter them by tags
 files = ks.dir2files("datasets/")
-tag_filter = ["imbalanced"]  # , "multi-class"]
+tag_filter = ["imbalanced"]
 datasets = []
 for file in files:
     X, y, dbname, tags = ks.csv2Xy(file)
