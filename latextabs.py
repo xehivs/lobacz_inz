@@ -4,7 +4,7 @@ def header4classifiers(classifiers):
     text = ""
     text += "\\begin{table}[!ht]\n"
     text += "\\centering\n"
-    text += "\\scriptsize\n"
+    text += "\\tiny\n"
     text += "\\begin{tabular}{l|\n"
     for i, clf in enumerate(classifiers):
         text += "S[table-format=0.3, table-figures-uncertainty=1]%s\n" % (
@@ -68,4 +68,43 @@ def footer(caption):
     text += "\\end{tabular}\n"
     text += "\\caption{%s}\n" % caption
     text += "\\end{table}\n"
+    return text
+
+def header4classifiers_ranks(classifiers):
+    text = ""
+    text += "\\begin{table}[!ht]\n"
+    text += "\\centering\n"
+    text += "\\scriptsize\n"
+    text += "\\begin{tabular}{c|\n"
+    for i, clf in enumerate(classifiers):
+        text += "S[table-format=0.3, table-figures-uncertainty=1]%s\n" % (
+            "|" if i != len(classifiers)-1 else "}"
+        )
+    text += "\\toprule"
+    text += "\\bfseries &\n"
+
+    for i, clf in enumerate(classifiers):
+        text += "\\multicolumn{1}{c%s}{\\bfseries %s} %s\n" % (
+            "|" if i != len(classifiers)-1 else " ",
+            clf + " (%i)" % (i+1),
+            "&" if i != len(classifiers)-1 else "\\\\"
+        )
+    text += "\\midrule\n"
+    """
+    \toprule
+      \bfseries &
+      \multicolumn{1}{c|}{\bfseries CLF1} &
+      \multicolumn{1}{c }{\bfseries CLF2} \\
+      \midrule
+    """
+
+    return text
+
+def row_ranks(scores):
+    text = "\\emph{Mean rank}"
+    for i in range(scores.shape[0]):
+        text += "& "
+        text += "${%.3f}$ " % scores[i]
+
+    text += "\\\\\n"
     return text
