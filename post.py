@@ -44,11 +44,8 @@ for mid, metric in enumerate(metrics):
         scores = np.mean(subtable, axis=1)
         stds = np.std(subtable, axis=1)
 
-        # ranks from subtable
-        subtable_rank = np.zeros((subtable.T.shape))
-        for row in range(subtable.T.shape[0]):
-            subtable_rank[row] = stats.rankdata(subtable.T[row])
-        rank = np.mean(subtable_rank.T, axis=1)
+        # ranks
+        rank = stats.rankdata(scores, method='average')
         ranks[mid, did] = rank
 
         # Get leader and check dependency
